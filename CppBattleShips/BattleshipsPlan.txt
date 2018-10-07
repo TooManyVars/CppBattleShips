@@ -1,0 +1,36 @@
+Objective: create a program in which the user plays battleships against an AI opponent.
+
+General rules:
+
+	| At the start of the game, Both the AI and the Player take turns to places their ships(reresented by an X in a "Sea" of 0s).
+		- for example, the player will place a ship, then the AI, then the player, and so on.
+
+	| After that, the AI and the player will take turns, in a similar fashion, to guess the coordinates of the grid in which they think an adversary ship is in.
+	  - guessing the coordinates correctly will return the X to an 0, effectively sinking the ship.
+
+	| The player with the least amount of ships left standing wins.
+
+Basic features:
+
+	| The player and AI will both need to have their own class which derives from  another, given that they will have similar attributes, such as a board and a score
+	  - because of the player and the AI having similar methods, use of virtual functions will be needed.
+
+	| The 'board' will simply be a two dimensional array: this will give us x and y coordinates for an X or 0 value.
+	  - example: 
+		string board[] = {{x,x,x} , {x,x,x} , {x,x,x}}; //here, the second arrays are the columns, and the X's are the rows.
+
+	| modification of the board will be as simply re-assigning an index, giving a row and a column number.
+
+Advanced/extra features:
+
+	| I want the player and AI to have a score as well as a name
+
+	| I also want for there to be a global variable to keep track of program(or, in our case), match time.
+
+	| It would also be more interesting if the AI had actual behviour to try and beat the player, rather than just blindly guessing.
+
+	| If we don't/can't add interesting AI behaviour, i'll need reliable means for generating a random number.
+
+Possible extensions/forks:
+
+	| I may want the program to be multiplayer.
