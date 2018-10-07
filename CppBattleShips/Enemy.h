@@ -1,7 +1,8 @@
 #pragma once
-#include "Entity.h"
+#include "stdafx.h"
 
-class Enemy: public Entity
+class Enemy : public Entity
 {
-
+public:
+	Enemy(int s, string pName) : Entity(s, pName) {};
 };

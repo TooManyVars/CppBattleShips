@@ -19,6 +19,9 @@
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{9b0810ff-7b32-477f-92f7-cdcba250b419}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{f0b32403-70ec-4f78-8cb5-b0237e8f0da6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -43,6 +46,9 @@
     </ClCompile>
     <ClCompile Include="CppBattleShips.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
