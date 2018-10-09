@@ -4,5 +4,5 @@
 class Enemy : public Entity
 {
 public:
-	Enemy(int s, string pName) : Entity(s, pName) {};
+	Enemy(int s, string pName, int bCols, int bRows) : Entity(s, pName, bCols,bRows) {};
 };
