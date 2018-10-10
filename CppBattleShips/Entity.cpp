@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Entity::Entity(int s, string pName, int bCols, int bRows) : score(s), playerName(pName), boardRows(bCols), boardColumns(bCols)
+Entity::Entity(string pName, int bCols, int bRows) : playerName(pName), boardRows(bCols), boardColumns(bCols)
 {
 
 	//initialise the board(max 15x15 grid)
@@ -33,14 +33,18 @@ int Entity::getScore()
 	return score;
 }
 
+//note that unsigned integer variabes can only store positive whole values
 void Entity::drawBoard()
 {
+	cout << playerName << "'s board:" << endl;
 	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
 	{
 		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
 		{
-			cout << board[i][x] << "   "; //output it's contents
+			cout << board[i][x] << "  "; //output it's contents
 		}
 		cout << endl; //end the line.
 	}
+
+	cout << "  " << endl;
 }
