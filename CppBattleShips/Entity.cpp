@@ -4,12 +4,16 @@ using namespace std;
 
 Entity::Entity(int s, string pName, int bCols, int bRows) : score(s), playerName(pName), boardRows(bCols), boardColumns(bCols)
 {
-	string water = "0"; //each cell will default to this "0" which indicates empty waters.
 
-	vector<string>temp; //a temporary holding place to put our desired amount of "0"s per row.
+	//initialise the board(max 15x15 grid)
+	string water = "~"; //each cell will default to this "~" which indicates empty waters.
+
+	
 
 	for (int i = 0; i < bCols; i++)//determines the amount of columns.
 	{
+		vector<string>temp; //a temporary holding place to put our desired amount of "~"s per row.
+
 		for (int x = 0; x < bRows; x++)//determines the number of rows.
 		{
 			temp.push_back(water); //created row
@@ -31,11 +35,11 @@ int Entity::getScore()
 
 void Entity::drawBoard()
 {
-	for (int i = 0; i < board.size(); i++)//iterate through the board's outer vector
+	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
 	{
-		for (int x = 0; x < board.size(); x++) //iterate through each index's inner vector
+		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
 		{
-			cout << board[i][x] << " "; //output it's contents
+			cout << board[i][x] << "   "; //output it's contents
 		}
 		cout << endl; //end the line.
 	}
