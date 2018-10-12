@@ -9,25 +9,28 @@ class Entity
 protected:
 
 	const int scoreAwarded = 100; //haven't decided the score awarded for sinking a ship yet, so for now we'll default to 100.
-	unsigned int score = 0;
+	
 	int boardColumns;
 	int boardRows;
+
+	unsigned int score = 0;
+	unsigned int initialShips; //the number of ships the player will start with. will be calculated in the constructor.
 	unsigned int shipsLeft; //the number of ships left(will be set after the player/AI places their ships
 
 	string playerName;
-	vector<vector<string> >board; //implement later
+	vector<vector<string> >board; //where battle will be done, put simply.
 
 public:
 
 	Entity(string pName, int bCols, int bRows);
 
-	//Getter functions.
+	//Simple Getter functions.
 	int getScore();
 	string getPlayerName();
+	int ShipsRemaining();
 
 	//Core game functions.
 	void drawBoard();
 	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; };
 	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };
-	//continue setting up game functionality.
 };

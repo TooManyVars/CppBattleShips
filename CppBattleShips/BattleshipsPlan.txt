@@ -23,7 +23,7 @@ Basic features:
 
 Advanced/extra features:
 
-	| I want the player and AI to have a score as well as a name
+	| I want the player and AI to have a score as well as a name.
 
 	| I also want for there to be a global variable to keep track of program(or, in our case), match time.
 

@@ -21,6 +21,42 @@ Entity::Entity(string pName, int bCols, int bRows) : playerName(pName), boardRow
 
 		board.push_back(temp); //append created row to the board.
 	}
+
+
+	//note that all of this logic is in light of the fact that the boards will all have the same height and width in order to make calculations easier.
+
+	/* Percentage hit logic
+	set the number of ships remaining, depending on the board size.
+	5*5 boards or higher: 52-44% chance of hitting a boat.
+	10*10 boards or higher: 44-33% chance of hitting a boat
+	15*15 boards: 32% chance.
+	*/
+
+	initialShips = bCols * 0.8; //multiply the grid dimensions by 0.8 to make them smaller.
+
+	/* Additional ships: additional logic
+	5*5(min)-9*9: add 9 onto the amount of initialShips.
+	10*10-14*14: add 35 onto the number of initialShips.
+	15*15(Max): add 60 onto the number of initialShips.
+	*/
+
+	if (bCols >= 15)
+	{
+		initialShips += 60;
+	}
+
+	else if (bCols >= 10)
+	{
+		initialShips += 35;
+	}
+
+	else if (bCols >= 5)
+	{
+		initialShips += 9;
+	}
+
+	shipsLeft = initialShips; //initially set the remaining ships and initalShips to the same value.
+
 }
 
 string Entity::getPlayerName()
@@ -31,6 +67,11 @@ string Entity::getPlayerName()
 int Entity::getScore()
 {
 	return score;
+}
+
+int Entity::ShipsRemaining()
+{
+	return shipsLeft;
 }
 
 //note that unsigned integer variabes can only store positive whole values
