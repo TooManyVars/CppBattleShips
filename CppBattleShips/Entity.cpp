@@ -3,14 +3,10 @@
 
 using namespace std;
 
-Entity::Entity(string pName, int bCols, int bRows) : playerName(pName), boardRows(bCols), boardColumns(bCols)
+Entity::Entity(string pName, int bCols, int bRows, string water, string ship) : playerName(pName), boardRows(bCols), boardColumns(bCols), water(water), ship(ship)
 {
 
-	//initialise the board(max 15x15 grid)
-	string water = "~"; //each cell will default to this "~" which indicates empty waters.
-
-	
-
+	//initialise the board(max 15x15 grid).
 	for (int i = 0; i < bCols; i++)//determines the amount of columns.
 	{
 		vector<string>temp; //a temporary holding place to put our desired amount of "~"s per row.

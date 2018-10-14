@@ -13,6 +13,10 @@ protected:
 	int boardColumns;
 	int boardRows;
 
+	//i want the water and the ship symbols to be custom.
+	string water; //the symbol indicating that there is no ship in that position.
+	string ship; //the symbol indicating  ship.
+
 	unsigned int score = 0;
 	unsigned int initialShips; //the number of ships the player will start with. will be calculated in the constructor.
 	unsigned int shipsLeft; //the number of ships left(will be set after the player/AI places their ships
@@ -22,7 +26,7 @@ protected:
 
 public:
 
-	Entity(string pName, int bCols, int bRows);
+	Entity(string pName, int bCols, int bRows, string water, string ship);
 
 	//Simple Getter methods.
 	int getScore();
@@ -32,8 +36,8 @@ public:
 	//Core game methods.
 	void drawBoard();
 	//polymorphic game methods
-	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; };
-	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };
+	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; }; //place a sinle ship.
+	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };//guess the coordinates of a ship on the adversary board.
 
 	//unacssociated helper functions.
 	static int getRN(unsigned int max, unsigned int min); //returns a random number in a given range.
