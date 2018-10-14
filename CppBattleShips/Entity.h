@@ -24,13 +24,17 @@ public:
 
 	Entity(string pName, int bCols, int bRows);
 
-	//Simple Getter functions.
+	//Simple Getter methods.
 	int getScore();
 	string getPlayerName();
 	int ShipsRemaining();
 
-	//Core game functions.
+	//Core game methods.
 	void drawBoard();
+	//polymorphic game methods
 	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; };
 	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };
+
+	//unacssociated helper functions.
+	static int getRN(unsigned int max, unsigned int min); //returns a random number in a given range.
 };

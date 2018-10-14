@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <random>
 
 using namespace std;
 
@@ -89,3 +90,15 @@ void Entity::drawBoard()
 
 	cout << "  " << endl;
 }
+
+int Entity::getRN(unsigned int max, unsigned int min)
+{
+	//min: this number can be generated.
+	//max: everything up until this number can be generated.
+
+	random_device rd;
+	uniform_int_distribution<int>dist(min, max);
+
+	return dist(rd);
+}
+
