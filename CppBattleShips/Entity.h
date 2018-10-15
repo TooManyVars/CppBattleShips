@@ -40,5 +40,5 @@ public:
 	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };//guess the coordinates of a ship on the adversary board.
 
 	//unacssociated helper functions.
-	static int getRN(unsigned int max, unsigned int min); //returns a random number in a given range.
+	static int getRN(unsigned int min, unsigned int max); //returns a random number in a given range.
 };

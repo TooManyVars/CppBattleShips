@@ -87,7 +87,7 @@ void Entity::drawBoard()
 	cout << "  " << endl;
 }
 
-int Entity::getRN(unsigned int max, unsigned int min)
+int Entity::getRN(unsigned int min, unsigned int max)
 {
 	//min: this number can be generated.
 	//max: everything up until this number can be generated.
