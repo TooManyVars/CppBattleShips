@@ -11,7 +11,7 @@ void Enemy::placeShip() //this will be random for now, but i'm thinking of addin
 
 	//assign a cell in the grid to a ship using the random set of coordinates.
 	//this referencing assumes that the inner vectors are the rows, and their indexes are the columns.
-	board[randomColumn][randomRow] = ship;
+	board[randomRow][randomColumn] = ship;
 }
 
 void Enemy::guessShip() //guess where the player has positioned their ships, perhaps using some math.
