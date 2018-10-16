@@ -16,5 +16,12 @@ void Enemy::placeShip() //this will be random for now, but i'm thinking of addin
 
 void Enemy::guessShip() //guess where the player has positioned their ships, perhaps using some math.
 {
+	/*
 
+	Proposed logic:
+	 - select a random row
+	 - select a random column from that row 
+	 - check if there is a ship present
+	 - if so, destroy it.
+	*/
 }

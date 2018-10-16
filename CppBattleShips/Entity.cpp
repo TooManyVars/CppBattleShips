@@ -98,3 +98,7 @@ int Entity::getRN(unsigned int min, unsigned int max)
 	return dist(rd);
 }
 
+void Entity::destroyShip(vector<vector<string> >board, string water,int row, int column)
+{
+	board[row][column] = water;
+}

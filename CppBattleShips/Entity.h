@@ -35,7 +35,9 @@ public:
 
 	//Core game methods.
 	void drawBoard();
-	//polymorphic game methods
+	static void destroyShip(vector<vector<string> >board,string water,int row, int column); //destroys a ship given a board, a set of coordinates within said board and the water to replace the ship.
+
+	//polymorphic game methods.
 	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; }; //place a sinle ship.
 	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };//guess the coordinates of a ship on the adversary board.
 
