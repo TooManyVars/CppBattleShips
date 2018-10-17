@@ -35,11 +35,24 @@ public:
 
 	//Core game methods.
 	void drawBoard();
-	static void destroyShip(vector<vector<string> >board,string water,int row, int column); //destroys a ship given a board, a set of coordinates within said board and the water to replace the ship.
+	void destroyShip(vector<int>coordinates);
 
 	//polymorphic game methods.
 	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; }; //place a sinle ship.
-	virtual void guessShip() { cout << "GUESS SHIP METHOD" << endl; };//guess the coordinates of a ship on the adversary board.
+	
+	
+	/*how this function is going to work:
+
+		- Will take a board size(will represent both the rows and columns: they will be presumed the same)
+		- In the enemy implementation: a random row and column will be selected to act as coordinates for the enemy board.
+		- in the player implementation: the player will get the choice of picking one set of coordinates 
+		in order to guess where a possible ship may be.
+
+		- both sets of coordinates will be returned as vector values, which can then be passed into destroyShip to determine whether there was a hit or not and destroy the ship accordingly.
+	*/
+
+	//returns 0,0 by default.
+	virtual vector<int>guessShip(int boardSize) { return { 0,0 }; };//guess the coordinates of a ship on the adversary board.
 
 	//unacssociated helper functions.
 	static int getRN(unsigned int min, unsigned int max); //returns a random number in a given range.

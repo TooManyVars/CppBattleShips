@@ -14,14 +14,10 @@ void Enemy::placeShip() //this will be random for now, but i'm thinking of addin
 	board[randomRow][randomColumn] = ship;
 }
 
-void Enemy::guessShip() //guess where the player has positioned their ships, perhaps using some math.
+vector<int> Enemy::guessShip(int boardSize) //guess where the player has positioned their ships, perhaps using some math.
 {
-	/*
+	int guessedRow = getRN(0, boardSize - 1);
+	int guessedColumn = getRN(0, boardSize - 1);
 
-	Proposed logic:
-	 - select a random row
-	 - select a random column from that row 
-	 - check if there is a ship present
-	 - if so, destroy it.
-	*/
+	return { guessedRow, guessedColumn };
 }

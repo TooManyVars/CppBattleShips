@@ -98,7 +98,12 @@ int Entity::getRN(unsigned int min, unsigned int max)
 	return dist(rd);
 }
 
-void Entity::destroyShip(vector<vector<string> >board, string water,int row, int column)
+void Entity::destroyShip(vector<int>coordinates)
 {
-	board[row][column] = water;
+	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
+	if (board[coordinates[0]][coordinates[1]] == ship)
+	{
+		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
+	}
+	
 }
