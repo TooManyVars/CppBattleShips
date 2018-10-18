@@ -56,4 +56,7 @@ public:
 
 	//unacssociated helper functions.
 	static int getRN(unsigned int min, unsigned int max); //returns a random number in a given range.
+	static int getValidIntInput(); //handles incorrect values and returns valid input(in this case ints)
+	
+
 };

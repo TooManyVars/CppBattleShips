@@ -9,16 +9,16 @@ void Player::placeShip()
 	unsigned int column;
 
 	cout << "Enter the desired row:" << endl;
-	cin >> row;
+	row = getValidIntInput();
 
 	while (row > board.size() - 1) //loop input to ensure the player does not enter a row number that doeesn't exist.
 	{
 		cout << "Row does not exist within the board, please enter a different row." << endl;
-		cin >> row;
+		row = getValidIntInput();
 	}
 	
 	cout << "Enter the desired column:" << endl;
-	cin >> column;
+	column = getValidIntInput();
 
 
 	//loop input to ensure the player does not enter a column number that doeesn't exist.
@@ -26,7 +26,7 @@ void Player::placeShip()
 	while (column > board[0].size())
 	{
 		cout << "Column does not exist within the board, please enter a different column." << endl;
-		cin >> column;
+		column = getValidIntInput();
 	}
 
 	board[row][column] = ship;

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <random>
+#include <limits> //used when handling bad input.
 
 using namespace std;
 
@@ -106,4 +107,27 @@ void Entity::destroyShip(vector<int>coordinates)
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 	}
 	
+}
+
+int Entity::getValidIntInput()
+{
+	int value;
+	cin >> value;
+
+	while (cin.fail()) //when the user gives anything other than a string:
+	{
+		//clear bad input flag
+		cin.clear();
+		//discard inputs
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+		//give error message.
+		cout << "Value cannot be a string. Please re-enter:" << endl;
+
+		//get input again
+		cin >> value;
+
+	}
+
+	return value;
 }
