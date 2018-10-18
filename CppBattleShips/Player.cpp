@@ -38,5 +38,28 @@ void Player::placeShip()
 
 vector<int>Player::guessShip(int boardSize)
 {
-	return { 0,0 };
+
+	unsigned int row;
+	unsigned int column;
+
+	cout << "Enter the row where you think an enemy ship may be:" << endl;
+	row = getValidIntInput();
+
+	while (row > boardSize - 1)
+	{
+		cout << "Row does not exist, please re-enter:" << endl;
+		row = getValidIntInput();
+	}
+
+	cout << "Enter a possible column:" << endl;
+	column = getValidIntInput();
+
+	while (column > boardSize - 1)
+	{
+		cout << "Column does not exist, please re-enter:" << endl;
+		column = getValidIntInput();
+	}
+
+	//cast back to signed before returning as vector coordinates(i have no clue why???)
+	return { (signed int)row, (signed int)column };
 }
