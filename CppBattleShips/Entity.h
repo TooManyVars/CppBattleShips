@@ -30,8 +30,13 @@ public:
 
 	//Simple Getter methods.
 	int getScore();
-	string getPlayerName();
+	int getBoardSize(); //get the board size(represents both height and width).
 	int ShipsRemaining();
+
+	string getPlayerName();
+
+	vector<vector<string> >getBoard();
+	
 
 	//Core game methods.
 	void drawBoard();

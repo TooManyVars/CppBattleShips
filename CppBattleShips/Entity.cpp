@@ -72,6 +72,16 @@ int Entity::ShipsRemaining()
 	return shipsLeft;
 }
 
+vector<vector<string> >Entity::getBoard()
+{
+	return board;
+}
+
+int Entity::getBoardSize()
+{
+	return boardColumns;
+}
+
 //note that unsigned integer variabes can only store positive whole values
 void Entity::drawBoard()
 {
@@ -105,6 +115,12 @@ void Entity::destroyShip(vector<int>coordinates)
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
+		cout << "Hit!" << endl;
+	}
+
+	else
+	{
+		cout << "Miss" << endl;
 	}
 	
 }
