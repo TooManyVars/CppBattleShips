@@ -37,7 +37,6 @@ public:
 
 	vector<vector<string> >getBoard();
 	
-
 	//Core game methods.
 	void drawBoard();
 	void destroyShip(vector<int>coordinates);
@@ -45,14 +44,12 @@ public:
 	//polymorphic game methods.
 	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; }; //place a sinle ship.
 	
-	
 	/*how this function is going to work:
 
 		- Will take a board size(will represent both the rows and columns: they will be presumed the same)
 		- In the enemy implementation: a random row and column will be selected to act as coordinates for the enemy board.
 		- in the player implementation: the player will get the choice of picking one set of coordinates 
 		in order to guess where a possible ship may be.
-
 		- both sets of coordinates will be returned as vector values, which can then be passed into destroyShip to determine whether there was a hit or not and destroy the ship accordingly.
 	*/
 
