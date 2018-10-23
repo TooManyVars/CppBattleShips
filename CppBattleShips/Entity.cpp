@@ -67,7 +67,7 @@ int Entity::getScore()
 	return score;
 }
 
-int Entity::ShipsRemaining()
+int Entity::shipsRemaining()
 {
 	return shipsLeft;
 }
@@ -115,8 +115,10 @@ void Entity::destroyShip(vector<int>coordinates)
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
-		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		cout << "Hit!" << endl;
+		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
+		shipsLeft -= 1;
+		
 	}
 
 	else
