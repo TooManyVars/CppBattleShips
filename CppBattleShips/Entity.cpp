@@ -109,6 +109,7 @@ int Entity::getRN(unsigned int min, unsigned int max)
 	return dist(rd);
 }
 
+
 void Entity::destroyShip(vector<int>coordinates)
 {
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
@@ -146,4 +147,14 @@ int Entity::getValidIntInput()
 	}
 
 	return value;
+}
+
+string Entity::getWater()
+{
+	return water;
+}
+
+string Entity::getShip()
+{
+	return ship;
 }

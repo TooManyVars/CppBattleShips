@@ -34,6 +34,8 @@ public:
 	int ShipsRemaining();
 
 	string getPlayerName();
+	string getWater(); //gets the symbol being used to represent water.
+	string getShip(); // gets the symbol being used to represent ships.
 
 	vector<vector<string> >getBoard();
 	
