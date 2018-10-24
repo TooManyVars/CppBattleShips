@@ -21,7 +21,7 @@ int Player::getValidCinput(string axis)
 
 	else if (axis == "column")
 	{
-		while (coordinate > board[0].size())
+		while (coordinate > board[0].size() - 1)
 		{
 			cout << "Column does not exist within the board, please enter a different column." << endl;
 			coordinate = getValidIntInput();
