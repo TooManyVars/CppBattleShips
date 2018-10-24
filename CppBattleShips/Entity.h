@@ -31,7 +31,8 @@ public:
 	//Simple Getter methods.
 	int getScore();
 	int getBoardSize(); //get the board size(represents both height and width).
-	int shipsRemaining();
+	int shipsRemaining(); //gets the number of ships left on an entity board.
+	int getInitialShips();
 
 	string getPlayerName();
 	string getWater(); //gets the symbol being used to represent water.
@@ -61,5 +62,4 @@ public:
 	//unacssociated helper functions.
 	static int getRN(unsigned int min, unsigned int max); //returns a random number in a given range.
 	static int getValidIntInput(); //handles incorrect values and returns valid input(in this case ints)
-	
 };

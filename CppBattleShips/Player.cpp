@@ -2,31 +2,50 @@
 
 using namespace std;
 
+int Player::getValidCinput(string axis)
+{
+	int coordinate;
+
+	cout << "\nEnter the desired " << axis << ":" << endl; //get input for one of the possible axis of coordinates.
+	coordinate = getValidIntInput();
+
+	//if the axis specifed was "row", check to see if the row number exists/is on the board. if it doesn't, loop input until it does.
+	if (axis == "row")
+	{
+		while (coordinate > board.size()-1)
+		{
+			cout << "\nRow does not exist within the board, please enter a different row." << endl;
+			coordinate = getValidIntInput();
+		}
+	}
+
+	else if (axis == "column")
+	{
+		while (coordinate > board[0].size())
+		{
+			cout << "Column does not exist within the board, please enter a different column." << endl;
+			coordinate = getValidIntInput();
+		}
+	}
+
+	//if the coordinate can be verified and exists on the board, return it.
+	return coordinate;
+}
+
 void Player::placeShip()
 {
 
 	unsigned int row;
 	unsigned int column;
 
-	cout << "Enter the desired row:" << endl;
-	row = getValidIntInput();
+	row = getValidCinput("row");
+	column = getValidCinput("column");
 
-	while (row > board.size() - 1) //loop input to ensure the player does not enter a row number that doeesn't exist.
+	while (board[row][column] == ship)
 	{
-		cout << "Row does not exist within the board, please enter a different row." << endl;
-		row = getValidIntInput();
-	}
-	
-	cout << "Enter the desired column:" << endl;
-	column = getValidIntInput();
-
-
-	//loop input to ensure the player does not enter a column number that doeesn't exist.
-	//all columns will be the same size, so we can just reference the first one by default.
-	while (column > board[0].size())
-	{
-		cout << "Column does not exist within the board, please enter a different column." << endl;
-		column = getValidIntInput();
+		cout << "\nThere is already a ship at the given position, please enter a different set of coordinates: " << endl;
+		row = getValidCinput("row");
+		column = getValidCinput("column");
 	}
 
 	board[row][column] = ship;

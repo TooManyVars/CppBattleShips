@@ -72,6 +72,11 @@ int Entity::shipsRemaining()
 	return shipsLeft;
 }
 
+int Entity::getInitialShips()
+{
+	return initialShips;
+}
+
 vector<vector<string> >Entity::getBoard()
 {
 	return board;
