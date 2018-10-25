@@ -6,8 +6,7 @@ int Player::getValidCinput(string axis)
 {
 	int coordinate;
 
-	cout << "\nEnter the desired " << axis << ":" << endl; //Get input for one half of one of the set of coordinates.
-	coordinate = getValidIntInput();	
+	coordinate = getValidIntInput();//Get input for one half of one of the set of coordinates.
 
 	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
 	{
@@ -53,7 +52,10 @@ void Player::placeShip()
 	unsigned int row;
 	unsigned int column;
 
+	cout << "\nEnter the desired row: "<< endl;
 	row = getValidCinput("row");
+
+	cout << "\nEnter the desired column: " << endl;
 	column = getValidCinput("column");
 
 	while (board[row][column] == ship)
@@ -67,33 +69,20 @@ void Player::placeShip()
 
 	drawBoard();
 
-
 }
 
-//check whether this function works efficently or not.
+//used to generate a set of coordinates where an enemy ship may be. does not actually check whether there is a ship there or not; that's destroyShip's job
 vector<int>Player::guessShip(int boardSize)
 {
-
 	unsigned int row;
 	unsigned int column;
 
 	cout << "Enter the row where you think an enemy ship may be:" << endl;
-	row = getValidIntInput();
-
-	while (row > boardSize - 1)
-	{
-		cout << "Row does not exist, please re-enter:" << endl;
-		row = getValidIntInput();
-	}
+	row = getValidCinput("row");
 
 	cout << "Enter a possible column:" << endl;
-	column = getValidIntInput();
+	column = getValidCinput("column");
 
-	while (column > boardSize - 1)
-	{
-		cout << "Column does not exist, please re-enter:" << endl;
-		column = getValidIntInput();
-	}
 
 	//cast back to signed before returning as vector coordinates(i have no clue why???)
 	return { (signed int)row, (signed int)column };
