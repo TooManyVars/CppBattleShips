@@ -9,7 +9,7 @@ int Player::getValidCinput(string axis)
 	cout << "\nEnter the desired " << axis << ":" << endl; //Get input for one half of one of the set of coordinates.
 	coordinate = getValidIntInput();	
 
-	while (coordinate < 1) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
+	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
 	{
 		cout << "\n" << axis << " coordinate cannot be less than 1, please re-enter: " << endl;
 		coordinate = getValidIntInput();

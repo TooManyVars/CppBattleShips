@@ -114,6 +114,16 @@ int Entity::getRN(unsigned int min, unsigned int max)
 	return dist(rd);
 }
 
+bool Entity::moreThanZero(int value)
+{
+	if (value > 0)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 
 void Entity::destroyShip(vector<int>coordinates)
 {
