@@ -34,3 +34,11 @@ Advanced/extra features:
 Possible extensions/forks:
 
 	| I may want the program to be multiplayer.
+
+
+
+28/10/18:
+
+- There's a major flaw in my battleships game: the player can see where the enemy's ships are on the board, which, of couse, is completely game breaking.
+my soloution is to have a 'detection' board full of water, and when the player guesses a set of coordinates correctly, the coordinates on the duplicate board have a ship placed in that 
+position to indicate that it has been hit.

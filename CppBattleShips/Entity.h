@@ -1,4 +1,4 @@
-#pragma once
+	#pragma once
 #include <iostream>
 
 using namespace std;
@@ -22,7 +22,13 @@ protected:
 	unsigned int shipsLeft; //the number of ships left(will be set after the player/AI places their ships
 
 	string playerName;
-	vector<vector<string> >board; //where battle will be done, put simply.
+
+	//The board which is never shown on screen, and simply for guessing. 
+	vector<vector<string> >board; 
+
+	//The board visible to the player(s).
+	//if a set of coordinates on the board with a ship is guessed correctly, the detection board puts a ship on it's board at the same position.
+	vector<vector<string> >detectionBoard; 
 
 public:
 
