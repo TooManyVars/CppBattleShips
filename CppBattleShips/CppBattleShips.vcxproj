@@ -167,7 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="BattleshipsPlan.txt" />
-    <Text Include="CurrentIssues.txt" />
+    <Text Include="notes.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

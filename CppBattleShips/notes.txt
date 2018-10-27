@@ -1,0 +1,6 @@
+Major Issues(logic related):
+
+
+Things to do:
+- make enemy/player attempting to guess more verbose
+- color the text to differentiate between error messages more easily.

@@ -10,7 +10,7 @@ int Player::getValidCinput(string axis)
 
 	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
 	{
-		cout << "\n" << axis << " coordinate cannot be less than 1, please re-enter: " << endl;
+		printf("\n %s coordinate cannot be less than 1, please re-enter:\n", axis.c_str());
 		coordinate = getValidIntInput();
 	}
 
@@ -60,13 +60,14 @@ void Player::placeShip()
 
 	while (board[row][column] == ship)
 	{
-		cout << "\nThere is already a ship at the given position, please enter a different set of coordinates: " << endl;
+		cout << "\nThere is already a ship at the given position." << endl;
+		cout << "\nEnter another desired row to place your ship:" << endl;
 		row = getValidCinput("row");
+		cout << "\nEnter another desired column to place your ship:" << endl;
 		column = getValidCinput("column");
 	}
 
 	board[row][column] = ship;
-
 	drawBoard();
 
 }
@@ -77,7 +78,7 @@ vector<int>Player::guessShip(int boardSize)
 	unsigned int row;
 	unsigned int column;
 
-	cout << "Enter the row where you think an enemy ship may be:" << endl;
+	cout << "\nEnter the row where you think an enemy ship may be:" << endl;
 	row = getValidCinput("row");
 
 	cout << "Enter a possible column:" << endl;

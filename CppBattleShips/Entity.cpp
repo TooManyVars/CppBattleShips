@@ -90,7 +90,7 @@ int Entity::getBoardSize()
 //note that unsigned integer variabes can only store positive whole values
 void Entity::drawBoard()
 {
-	cout << playerName << "'s board:" << endl;
+	printf("\n%s's board: ", playerName.c_str());
 	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
 	{
 		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
@@ -130,7 +130,7 @@ void Entity::destroyShip(vector<int>coordinates)
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
-		cout << "Hit!" << endl;
+		cout << "Hit!" << endl; //we need a better way of formatting text here.
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
 		

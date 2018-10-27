@@ -61,7 +61,7 @@
     <Text Include="BattleshipsPlan.txt">
       <Filter>Notes</Filter>
     </Text>
-    <Text Include="CurrentIssues.txt">
+    <Text Include="notes.txt">
       <Filter>Notes</Filter>
     </Text>
   </ItemGroup>
