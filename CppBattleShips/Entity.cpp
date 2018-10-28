@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Entity::Entity(string pName, int bCols, int bRows, string water, string ship) : playerName(pName), boardRows(bCols), boardColumns(bCols), water(water), ship(ship)
+Entity::Entity(string pName, int bCols, int bRows, string water, string ship): playerName(pName), boardRows(bCols), boardColumns(bCols), water(water), ship(ship)
 {
 
 	//initialise the board(max 15x15 grid).
@@ -17,7 +17,9 @@ Entity::Entity(string pName, int bCols, int bRows, string water, string ship) : 
 			temp.push_back(water); //created row
 		}
 
-		board.push_back(temp); //append created row to the board.
+		//append created row to both the real and the detection board.
+		board.push_back(temp); 
+		detectionBoard.push_back(temp);
 	}
 
 
@@ -77,6 +79,50 @@ int Entity::getInitialShips()
 	return initialShips;
 }
 
+int Entity::getValidCinput(string axis)
+{
+	int coordinate;
+
+	coordinate = getValidIntInput();//Get input for one half of one of the set of coordinates.
+
+	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
+	{
+		printf("\n %s coordinate cannot be less than 1, please re-enter:\n", axis.c_str());
+		coordinate = getValidIntInput();
+	}
+
+	//decrement AFTER checking if the input is below 1, as 1 is decremented to 0 and caught by the loop, ruling out placement of ships on row 1.
+	coordinate -= 1; //decrement by 1 so that the user can give a row and column number starting from 1.
+
+					 //if the axis specifed was "row", check to see if the row number exists/is on the board. if it doesn't, loop input until it does.
+	if (axis == "row")
+	{
+
+		//make sure the player can't reference a row that doesn't exist on the row(which could either be above the size of the row/column or below 0.
+		while (coordinate > board.size() - 1)
+		{
+			cout << "\nRow does not exist within the board, please enter a different row." << endl;
+			coordinate = getValidIntInput();
+			coordinate -= 1; //decrement player input again so that they can always enter coordinates starting from 1.
+		}
+	}
+
+	//we could easily reference the number of  rows, as they are the same, but to be more specific we reference the amount of columns in each row.
+	//similar algorithim for validation of "row"
+	else if (axis == "column")
+	{
+		while (coordinate > board[0].size() - 1)
+		{
+			cout << "Column does not exist within the board, please enter a different column." << endl;
+			coordinate = getValidIntInput();
+			coordinate -= 1;
+		}
+	}
+
+	//if the coordinate can be verified and exists on the board, return it.
+	return coordinate;
+}
+
 vector<vector<string> >Entity::getBoard()
 {
 	return board;
@@ -87,7 +133,7 @@ int Entity::getBoardSize()
 	return boardColumns;
 }
 
-//note that unsigned integer variabes can only store positive whole values
+//draw the detection board to that it can be displayed to the player(s).
 void Entity::drawBoard()
 {
 	printf("\n%s's board: ", playerName.c_str());
@@ -125,22 +171,59 @@ bool Entity::moreThanZero(int value)
 	return false;
 }
 
-//takes in a set of coordinates and checks whether a ship exists there on the entity's board. if it does, destroy it and replace a water cell at the position.
-void Entity::destroyShip(vector<int>coordinates)
+//takes in a set of coordinates(the vector will always be of length 2) and checks whether a ship exists there on the entity's board. 
+//If it does, destroy it and replace a water cell at the position.
+//The destroyer parameter is used to get the name of the player/enemy who destroyed the ship.
+void Entity::destroyShip(vector<int>coordinates, string destroyer)
 {
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
-		printf("%s hit a ship at coordinates %i,%i!\n",playerName.c_str(), coordinates[0],coordinates[1]);
+		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0],coordinates[1]);
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
 	}
 
 	else
 	{
-		cout << "%s missed!" << endl;
+		printf("\n%s missed!", destroyer.c_str());
 	}	
+}
+
+void Entity::placeShip()
+{
+	unsigned int row;
+	unsigned int column;
+
+	cout << "\nEnter the desired row: " << endl;
+	row = getValidCinput("row");
+
+	cout << "\nEnter the desired column: " << endl;
+	column = getValidCinput("column");
+
+	while (board[row][column] == ship)
+	{
+		cout << "\nThere is already a ship at the given position." << endl;
+		cout << "\nEnter another desired row to place your ship:" << endl;
+		row = getValidCinput("row");
+		cout << "\nEnter another desired column to place your ship:" << endl;
+		column = getValidCinput("column");
+	}
+
+	board[row][column] = ship;
+	drawBoard();
+}
+
+void Entity::autoPlaceShip()
+{
+	//get a random column/row number between 0 and the maximum number of columns/rows
+	int randomColumn = getRN(0, boardColumns - 1);
+	int randomRow = getRN(0, boardRows - 1);
+
+	//assign a cell in the grid to a ship using the random set of coordinates.
+	//this referencing assumes that the inner vectors are the rows, and their indexes are the columns.
+	board[randomRow][randomColumn] = ship;
 }
 
 int Entity::getValidIntInput()

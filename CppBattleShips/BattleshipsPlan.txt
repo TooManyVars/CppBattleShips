@@ -42,3 +42,5 @@ Possible extensions/forks:
 - There's a major flaw in my battleships game: the player can see where the enemy's ships are on the board, which, of couse, is completely game breaking.
 my soloution is to have a 'detection' board full of water, and when the player guesses a set of coordinates correctly, the coordinates on the duplicate board have a ship placed in that 
 position to indicate that it has been hit.
+
+The player will be able to see their ships on their real board at all time, but they will only be able to see ships on the enemy's "detection" board, but only when they have successfullly been discovered.

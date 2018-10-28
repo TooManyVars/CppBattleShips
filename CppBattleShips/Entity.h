@@ -39,6 +39,7 @@ public:
 	int getBoardSize(); //get the board size(represents both height and width).
 	int shipsRemaining(); //gets the number of ships left on an entity board.
 	int getInitialShips();
+	int getValidCinput(string axis); //handles getting valid input for coordinates on the board, making sure they are within the bounds of the board.
 
 	string getPlayerName();
 	string getWater(); //gets the symbol being used to represent water.
@@ -48,10 +49,10 @@ public:
 	
 	//Core game methods.
 	void drawBoard();
-	void destroyShip(vector<int>coordinates);
+	void destroyShip(vector<int>coordinates, string destroyer);
 
-	//polymorphic game methods.
-	virtual void placeShip() { cout << "PLACE SHIP METHOD" << endl; }; //place a sinle ship.
+	void placeShip(); //place a sinle ship.
+	void autoPlaceShip(); //automatically place a ship on the board using RNG.
 	
 	/*how this function is going to work:
 
