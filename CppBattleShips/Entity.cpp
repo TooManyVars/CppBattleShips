@@ -140,7 +140,7 @@ void Entity::drawBoard()
 	cout << endl;
 	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
 	{
-		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
+ 		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
 		{
 			cout << board[i][x] << "  "; //output it's contents
 		}
