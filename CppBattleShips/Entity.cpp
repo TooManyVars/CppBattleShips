@@ -258,3 +258,16 @@ string Entity::getShip()
 {
 	return ship;
 }
+
+//returns a string with a specified number of characters. simplified custom version of the setw function.
+string Entity::setw(int amount)
+{
+	string finalString;
+
+	for (int x = 0; x <= amount; x++)
+	{
+		finalString += " ";
+	}
+
+	return finalString;
+}
