@@ -87,6 +87,7 @@ int Entity::getValidCinput(string axis)
 
 	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
 	{
+		cout << setw(80) << flush;
 		printf("\n %s coordinate cannot be less than 1, please re-enter:\n", axis.c_str());
 		coordinate = getValidIntInput();
 	}
