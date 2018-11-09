@@ -240,7 +240,7 @@ int Entity::getValidIntInput()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 		//give error message.
-		cout << "Value cannot be an integer, Please re-enter:" << endl;
+		cout << "Value must be an integer, Please re-enter:" << endl;
 
 		//get input again
 		cin >> value;
