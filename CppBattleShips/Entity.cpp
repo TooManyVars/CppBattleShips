@@ -59,6 +59,18 @@ Entity::Entity(string pName, int bCols, int bRows, string water, string ship): p
 
 }
 
+void Entity::outputEntityInformation()
+{
+	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	printf("Board dimensions: %i x %i\n", boardColumns, boardRows);
+	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	printf("Water character: %s\n", water.c_str());
+	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	printf("Ship characters: %s\n", ship.c_str());
+	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	cout << "----------------" << endl;
+}
+
 string Entity::getPlayerName()
 {
 	return playerName;

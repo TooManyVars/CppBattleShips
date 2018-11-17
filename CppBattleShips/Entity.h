@@ -47,6 +47,9 @@ public:
 	int getInitialShips();
 	int getValidCinput(string axis); //handles getting valid input for coordinates on the board, making sure they are within the bounds of the board.
 
+	//Outputs the various attributes of the player/ship.
+	void outputEntityInformation();
+
 	string getPlayerName();
 	string getWater(); //gets the symbol being used to represent water.
 	string getShip(); // gets the symbol being used to represent ships.
