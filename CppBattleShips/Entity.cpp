@@ -275,9 +275,16 @@ string Entity::getShip()
 //returns a string with a specified number of characters. simplified custom version of the setw function.
 string Entity::setw(int amount)
 {
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	int columns, rows;
+
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+	rows = (csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
+
 	string finalString;
 
-	for (int x = 0; x <= amount; x++)
+	for (int x = 0; x <= rows; x++)
 	{
 		finalString += " ";
 	}
