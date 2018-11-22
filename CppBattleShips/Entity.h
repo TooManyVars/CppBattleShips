@@ -25,7 +25,6 @@ protected:
 
 	//The board which is never shown on screen, and simply for guessing. 
 	vector<vector<string> >board; 
-
 	//The board visible to the player(s).
 	//if a set of coordinates on the board with a ship is guessed correctly, the detection board puts a ship on it's board at the same position.
 	vector<vector<string> >detectionBoard; 
@@ -80,4 +79,6 @@ public:
 	static int getValidIntInput(); //handles incorrect values and returns valid input(in this case ints)
 	static bool moreThanZero(int value); //checks whether a given number is more than 0.
 	static string setw(int amount);
+	//positions text at the center of the screen, depending on the height and width of the screen.
+	static string centerText();
 };

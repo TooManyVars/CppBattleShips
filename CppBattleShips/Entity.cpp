@@ -275,6 +275,19 @@ string Entity::getShip()
 //returns a string with a specified number of characters. simplified custom version of the setw function.
 string Entity::setw(int amount)
 {
+	string finalString; //the final empty string we'll return so that we can space out the text.
+
+	for (int x = 0; x <= amount; x++) //Depending on the amount of spaces needed
+	{
+		//add x number of spaces to the final string.
+		finalString += " ";
+	}
+
+	return finalString;
+}
+
+string Entity::centerText() //Centers the text on screen to fit it to the middle of the window.
+{
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
 	int columns, rows;
 
