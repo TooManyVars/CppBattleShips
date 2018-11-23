@@ -61,13 +61,13 @@ Entity::Entity(string pName, int bCols, int bRows, string water, string ship): p
 
 void Entity::outputEntityInformation()
 {
-	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	cout << Entity::centerText() << flush;
 	printf("Board dimensions: %i x %i\n", boardColumns, boardRows);
-	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	cout << Entity::centerText() << flush;
 	printf("Water character: %s\n", water.c_str());
-	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	cout << Entity::centerText() << flush;
 	printf("Ship characters: %s\n", ship.c_str());
-	cout << Entity::setw(Entity::defaultLeftPadding - 3) << flush;
+	cout << Entity::centerText() << flush;
 	cout << "----------------" << endl;
 }
 
@@ -99,7 +99,7 @@ int Entity::getValidCinput(string axis)
 
 	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
 	{
-		cout << setw(80) << flush;
+		cout << centerText() << flush;
 		printf("\n %s coordinate cannot be less than 1, please re-enter:\n", axis.c_str());
 		coordinate = getValidIntInput();
 	}
@@ -107,6 +107,7 @@ int Entity::getValidCinput(string axis)
 	//decrement AFTER checking if the input is below 1, as 1 is decremented to 0 and caught by the loop, ruling out placement of ships on row 1.
 	coordinate -= 1; //decrement by 1 so that the user can give a row and column number starting from 1.
 
+	
 					 //if the axis specifed was "row", check to see if the row number exists/is on the board. if it doesn't, loop input until it does.
 	if (axis == "row")
 	{
@@ -252,7 +253,7 @@ int Entity::getValidIntInput()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 		//give error message.
-		cout << "Value must be an integer, Please re-enter:" << endl;
+		cout << centerText() << "Value must be positive and an integer, Please re-enter:" << endl;
 
 		//get input again
 		cin >> value;
