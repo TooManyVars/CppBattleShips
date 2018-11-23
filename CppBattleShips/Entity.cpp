@@ -190,10 +190,13 @@ bool Entity::moreThanZero(int value)
 //The destroyer parameter is used to get the name of the player/enemy who destroyed the ship.
 void Entity::destroyShip(vector<int>coordinates, string destroyer)
 {
+	cout << centerText() << flush; //center the text no matter the output.
+
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
+		cout << centerText() << flush;
 		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0],coordinates[1]);
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
@@ -210,18 +213,18 @@ void Entity::placeShip()
 	unsigned int row;
 	unsigned int column;
 
-	cout << "\nEnter the desired row: " << endl;
+	cout << "\n" <<  centerText() << "Enter the desired row: " << endl;
 	row = getValidCinput("row");
 
-	cout << "\nEnter the desired column: " << endl;
+	cout << "\n" << centerText() << "Enter the desired column: " << endl;
 	column = getValidCinput("column");
 
 	while (board[row][column] == ship)
 	{
-		cout << "\nThere is already a ship at the given position." << endl;
-		cout << "\nEnter another desired row to place your ship:" << endl;
+		cout << "\n" << centerText() << "There is already a ship at the given position." << endl;
+		cout << "\n" << centerText() << "Enter another desired row to place your ship:" << endl;
 		row = getValidCinput("row");
-		cout << "\nEnter another desired column to place your ship:" << endl;
+		cout << "\n" << centerText() << "Enter another desired column to place your ship:" << endl;
 		column = getValidCinput("column");
 	}
 
@@ -296,9 +299,11 @@ string Entity::centerText() //Centers the text on screen to fit it to the middle
 	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
 	rows = (csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
 
+	const double multiplier = 1.001; //the multiplier to add slightly more characters and push the text slightly further to the right, to more perfectly centered feel of the UI.
+
 	string finalString;
 
-	for (int x = 0; x <= rows; x++)
+	for (int x = 0; x <= rows * multiplier ; x++)
 	{
 		finalString += " ";
 	}
