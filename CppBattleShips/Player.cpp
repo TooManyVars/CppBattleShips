@@ -8,12 +8,11 @@ vector<int>Player::guessShip(int boardSize)
 	unsigned int row;
 	unsigned int column;
 
-	cout << "\nEnter the row where you think an enemy ship may be:" << endl;
+	cout << "\n" << centerText() << "Enter the row where you think an enemy ship may be:" << endl;
 	row = getValidCinput("row");
 
-	cout << "Enter a possible column:" << endl;
+	cout << centerText() << "Enter a possible column:" << endl;
 	column = getValidCinput("column");
-
 
 	//cast back to signed before returning as vector coordinates(i have no clue why???)
 	return { (signed int)row, (signed int)column };

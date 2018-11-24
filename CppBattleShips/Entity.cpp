@@ -94,13 +94,13 @@ int Entity::getInitialShips()
 int Entity::getValidCinput(string axis)
 {
 	int coordinate;
-
 	coordinate = getValidIntInput();//Get input for one half of one of the set of coordinates.
+
+	//Check that the expected input is not a string.
 
 	while (!moreThanZero(coordinate)) //while loop to validate input of numbers which are less than 1(we do this because we want the user to give coordinates starting from 1.
 	{
-		cout << centerText() << flush;
-		printf("\n %s coordinate cannot be less than 1, please re-enter:\n", axis.c_str());
+		printf("%s\n %s coordinate cannot be less than 1, please re-enter:\n", centerText().c_str(),axis.c_str());
 		coordinate = getValidIntInput();
 	}
 
@@ -115,7 +115,7 @@ int Entity::getValidCinput(string axis)
 		//make sure the player can't reference a row that doesn't exist on the row(which could either be above the size of the row/column or below 0.
 		while (coordinate > board.size() - 1)
 		{
-			cout << "\nRow does not exist within the board, please enter a different row." << endl;
+			cout << "\n" << centerText() << "Row does not exist within the board, please enter a different row." << endl;
 			coordinate = getValidIntInput();
 			coordinate -= 1; //decrement player input again so that they can always enter coordinates starting from 1.
 		}
@@ -127,7 +127,7 @@ int Entity::getValidCinput(string axis)
 	{
 		while (coordinate > board[0].size() - 1)
 		{
-			cout << "Column does not exist within the board, please enter a different column." << endl;
+			cout << centerText() <<"Column does not exist within the board, please enter a different column." << endl;
 			coordinate = getValidIntInput();
 			coordinate -= 1;
 		}
@@ -190,11 +190,12 @@ bool Entity::moreThanZero(int value)
 //The destroyer parameter is used to get the name of the player/enemy who destroyed the ship.
 void Entity::destroyShip(vector<int>coordinates, string destroyer)
 {
-	cout << centerText() << flush; //center the text no matter the output.
+	//cout << centerText() << flush; //center the text no matter the output.
 
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
+		cout << centerText() << flush;
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
 		cout << centerText() << flush;
 		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0],coordinates[1]);
@@ -204,7 +205,8 @@ void Entity::destroyShip(vector<int>coordinates, string destroyer)
 
 	else
 	{
-		printf("\n%s missed!", destroyer.c_str());
+		cout << centerText() << flush;
+		printf("\n%s%s missed!", centerText().c_str(),destroyer.c_str());
 	}	
 }
 
@@ -243,20 +245,21 @@ void Entity::autoPlaceShip()
 	board[randomRow][randomColumn] = ship;
 }
 
+//////////////////////////////////////////////Currently modifying to check if the value given is a string/precedes a string
 int Entity::getValidIntInput()
 {
 	int value;
 	cin >> value;
 
-	while (cin.fail()) //when the user gives anything other than a string:
+	while (cin.fail()) //when the user gives anything other than an integer:
 	{
 		//clear bad input flag
 		cin.clear();
 		//discard inputs
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-
+		
 		//give error message.
-		cout << centerText() << "Value must be positive and an integer, Please re-enter:" << endl;
+		cout << centerText() << "Value must be positive/an integer, Please re-enter:" << endl;
 
 		//get input again
 		cin >> value;
@@ -265,6 +268,7 @@ int Entity::getValidIntInput()
 
 	return value;
 }
+//////////////////////////////////////////////
 
 string Entity::getWater()
 {
