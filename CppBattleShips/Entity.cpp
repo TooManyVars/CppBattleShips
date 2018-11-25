@@ -205,8 +205,8 @@ void Entity::destroyShip(vector<int>coordinates, string destroyer)
 
 	else
 	{ 
-		cout << centerText() << flush;
 		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
+		cout << endl;
 	}	
 }
 

@@ -15,7 +15,9 @@ void Enemy::destroyShip(vector<int> coordinates, string destroyer)
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
+		cout << centerText() << flush;
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
+		cout << centerText() << flush;
 		printf("%s hit a ship at coordinates %i,%i!\n", destroyer.c_str(), coordinates[0], coordinates[1]);
 		detectionBoard[coordinates[0]][coordinates[1]] = ship;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
@@ -23,7 +25,7 @@ void Enemy::destroyShip(vector<int> coordinates, string destroyer)
 
 	else
 	{
-		printf("\n%s missed!", destroyer.c_str());
+		printf("\n%s%s missed!", centerText().c_str(),destroyer.c_str());
 	}
 }
 
