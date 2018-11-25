@@ -74,11 +74,15 @@ public:
 	//returns 0,0 by default.
 	virtual vector<int>guessShip(int boardSize) { return { 0,0 }; };//guess the coordinates of a ship on the adversary board.
 
-	//unacssociated helper functions.
+	//unacssociated helper functions. are also static.
 	static int getRN(unsigned int min, unsigned int max); //returns a random number in a given range.
 	static int getValidIntInput(); //handles incorrect values and returns valid input(in this case ints)
+
 	static bool moreThanZero(int value); //checks whether a given number is more than 0.
+
 	static string setw(int amount);
 	//positions text at the center of the screen, depending on the height and width of the screen.
 	static string centerText();
 };
+
+

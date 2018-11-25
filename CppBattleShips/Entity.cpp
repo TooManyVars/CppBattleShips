@@ -204,9 +204,9 @@ void Entity::destroyShip(vector<int>coordinates, string destroyer)
 	}
 
 	else
-	{
+	{ 
 		cout << centerText() << flush;
-		printf("\n%s%s missed!", centerText().c_str(),destroyer.c_str());
+		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
 	}	
 }
 
@@ -248,7 +248,7 @@ void Entity::autoPlaceShip()
 //////////////////////////////////////////////Currently modifying to check if the value given is a string/precedes a string
 int Entity::getValidIntInput()
 {
-	int value;
+	int value = 0;
 	cin >> value;
 
 	while (cin.fail()) //when the user gives anything other than an integer:
