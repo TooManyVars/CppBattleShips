@@ -245,7 +245,7 @@ void Entity::autoPlaceShip()
 	board[randomRow][randomColumn] = ship;
 }
 
-//////////////////////////////////////////////Currently modifying to check if the value given is a string/precedes a string
+
 int Entity::getValidIntInput()
 {
 	int value = 0;
@@ -268,7 +268,6 @@ int Entity::getValidIntInput()
 
 	return value;
 }
-//////////////////////////////////////////////
 
 string Entity::getWater()
 {
@@ -313,4 +312,17 @@ string Entity::centerText() //Centers the text on screen to fit it to the middle
 	}
 
 	return finalString;
+}
+
+void Entity::setTextColor(int colorNum)
+{
+	/*
+	Important colors:
+		- light red = 12
+		- light green = 10
+		- white: 15
+	*/
+
+	HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE); //Get the console with the standard input handle(not much of a clue what that is, but stay with me) so that we can change the color of the text.
+	SetConsoleTextAttribute(console, colorNum); //actually set the color of the text on screen.
 }

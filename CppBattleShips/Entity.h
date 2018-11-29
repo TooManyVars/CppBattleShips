@@ -83,6 +83,9 @@ public:
 	static string setw(int amount);
 	//positions text at the center of the screen, depending on the height and width of the screen.
 	static string centerText();
+
+	//Set the text color of the output, using a number assigned color(for example bright green is 10) goes up until 256 meaning that there are 256 possible colors.
+	static void setTextColor(int colorNum);
 };
 
 
