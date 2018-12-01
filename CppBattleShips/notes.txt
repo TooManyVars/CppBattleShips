@@ -1,4 +1,6 @@
-Major Issues(logic related):
+Major Issues/Nessecary updates(logic related):
+ 
+-  
 
 
 Things to do:

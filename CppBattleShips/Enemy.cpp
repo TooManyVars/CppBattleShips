@@ -18,8 +18,8 @@ void Enemy::destroyShip(vector<int> coordinates, string destroyer)
 		cout << centerText() << flush;
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
 		cout << centerText() << flush;
-		printf("%s hit a ship at coordinates %i,%i!\n", destroyer.c_str(), coordinates[0], coordinates[1]);
-		detectionBoard[coordinates[0]][coordinates[1]] = ship;//the "ship" has been sunken; make the position water again.
+		printf("%s hit a ship at coordinates %i,%i!\n", destroyer.c_str(), coordinates[0]+1, coordinates[1]+1);
+		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
 	}
 
@@ -29,16 +29,16 @@ void Enemy::destroyShip(vector<int> coordinates, string destroyer)
 	}
 }
 
-//enemy variation of the drawBoard method only shows the detection board instead of the real board.
+//enemy variation of the drawBoard method should only show the detection board instead of the real board.
 void Enemy::drawBoard()
 {
 	printf("\n%s's board: ", playerName.c_str());
 	cout << endl;
-	for (unsigned int i = 0; i < detectionBoard.size(); i++)//iterate through the board's outer vector
+	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
 	{
-		for (unsigned int x = 0; x < detectionBoard[i].size(); x++) //iterate through each index's inner vector
+		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
 		{
-			cout << detectionBoard[i][x] << "  "; //output it's contents
+			cout << board[i][x] << "  "; //output it's contents
 		}
 		cout << endl; //end the line.
 	}

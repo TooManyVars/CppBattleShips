@@ -198,7 +198,7 @@ void Entity::destroyShip(vector<int>coordinates, string destroyer)
 		cout << centerText() << flush;
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
 		cout << centerText() << flush;
-		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0],coordinates[1]);
+		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0]+1,coordinates[1]+1);
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
 	}
