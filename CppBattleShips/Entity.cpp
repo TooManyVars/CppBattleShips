@@ -195,7 +195,7 @@ void Entity::destroyShip(vector<int>coordinates, string destroyer)
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
-		cout << centerText() << flush;
+		cout << "\n" << centerText() << flush;
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
 		cout << centerText() << flush;
 		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0]+1,coordinates[1]+1);
