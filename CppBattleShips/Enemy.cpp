@@ -25,7 +25,7 @@ void Enemy::destroyShip(vector<int> coordinates, string destroyer)
 
 	else
 	{
-		printf("\n%s%s missed!", centerText().c_str(),destroyer.c_str());
+		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
 	}
 }
 
