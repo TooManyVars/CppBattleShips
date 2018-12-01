@@ -1,6 +1,6 @@
 Major Issues/Nessecary updates(logic related):
  
--  
+-  A grid around the outside, to be able to tell the coordinates.
 
 
 Things to do:
