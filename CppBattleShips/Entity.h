@@ -62,6 +62,9 @@ public:
 
 	void placeShip(); //place a sinle ship.
 	void autoPlaceShip(); //automatically place a ship on the board using RNG.
+
+	//Increases the store by a set amount when the player sinks a ship
+	void incrementScore() { score += 10; };
 	
 	/*how this function is going to work:
 
