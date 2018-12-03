@@ -10,7 +10,7 @@ vector<int> Enemy::guessShip(int boardSize) //guess where the player has positio
 	return { guessedRow, guessedColumn };
 }
 
-void Enemy::destroyShip(vector<int> coordinates, string destroyer)
+bool Enemy::destroyedShip(vector<int> coordinates, string destroyer)
 {
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
@@ -21,11 +21,14 @@ void Enemy::destroyShip(vector<int> coordinates, string destroyer)
 		printf("%s hit a ship at coordinates %i,%i!\n", destroyer.c_str(), coordinates[0]+1, coordinates[1]+1);
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
+
+		return true;
 	}
 
 	else
 	{
 		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
+		return false;
 	}
 }
 

@@ -58,7 +58,7 @@ public:
 	
 	//Core game methods.
 	virtual void drawBoard();
-	virtual void destroyShip(vector<int>coordinates, string destroyer);
+	virtual bool destroyedShip(vector<int>coordinates, string destroyer);
 
 	void placeShip(); //place a sinle ship.
 	void autoPlaceShip(); //automatically place a ship on the board using RNG.

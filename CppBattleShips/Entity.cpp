@@ -188,7 +188,8 @@ bool Entity::moreThanZero(int value)
 //takes in a set of coordinates(the vector will always be of length 2) and checks whether a ship exists there on the entity's board. 
 //If it does, destroy it and replace a water cell at the position.
 //The destroyer parameter is used to get the name of the player/enemy who destroyed the ship.
-void Entity::destroyShip(vector<int>coordinates, string destroyer)
+//returns either true or false so that we can determine, outside the class, whether or not the player/enemy hit or not and adjust their score accordingly.
+bool Entity::destroyedShip(vector<int>coordinates, string destroyer)
 {
 	//cout << centerText() << flush; //center the text no matter the output.
 
@@ -201,12 +202,16 @@ void Entity::destroyShip(vector<int>coordinates, string destroyer)
 		printf("%s hit a ship at coordinates %i,%i!\n",destroyer.c_str(), coordinates[0]+1,coordinates[1]+1);
 		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
 		shipsLeft -= 1;
+
+		return true;
 	}
 
 	else
 	{ 
 		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
 		cout << endl;
+
+		return false;
 	}	
 }
 
