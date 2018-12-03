@@ -42,8 +42,8 @@ public:
 
 	//Simple Getter methods.
 	int getScore();
-	int getBoardSize(); //get the board size(represents both height and width).
 	int shipsRemaining(); //gets the number of ships left on an entity board.
+	int getBoardSize(); //get the board size(represents both height and width).
 	int getInitialShips();
 	int getValidCinput(string axis); //handles getting valid input for coordinates on the board, making sure they are within the bounds of the board.
 

@@ -188,7 +188,7 @@ bool Entity::moreThanZero(int value)
 //takes in a set of coordinates(the vector will always be of length 2) and checks whether a ship exists there on the entity's board. 
 //If it does, destroy it and replace a water cell at the position.
 //The destroyer parameter is used to get the name of the player/enemy who destroyed the ship.
-//returns either true or false so that we can determine, outside the class, whether or not the player/enemy hit or not and adjust their score accordingly.
+//Returns either true or false so that we can determine, outside the class, whether or not the player/enemy hit or not and adjust their score accordingly.
 bool Entity::destroyedShip(vector<int>coordinates, string destroyer)
 {
 	//cout << centerText() << flush; //center the text no matter the output.
