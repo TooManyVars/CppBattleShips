@@ -56,8 +56,8 @@ Entity::Entity(string pName, int bCols, int bRows, string water, string ship): p
 	}
 
 	shipsLeft = initialShips; //initially set the remaining ships and initalShips to the same value.
-
 }
+
 
 void Entity::outputEntityInformation()
 {

@@ -47,9 +47,6 @@ public:
 	int getInitialShips();
 	int getValidCinput(string axis); //handles getting valid input for coordinates on the board, making sure they are within the bounds of the board.
 
-	//Outputs the various attributes of the player/ship.
-	void outputEntityInformation();
-
 	string getPlayerName();
 	string getWater(); //gets the symbol being used to represent water.
 	string getShip(); // gets the symbol being used to represent ships.
@@ -60,11 +57,10 @@ public:
 	virtual void drawBoard();
 	virtual bool destroyedShip(vector<int>coordinates, string destroyer);
 
+	void outputEntityInformation();//Outputs the various attributes of the player/ship.
 	void placeShip(); //place a sinle ship.
 	void autoPlaceShip(); //automatically place a ship on the board using RNG.
-
-	//Increases the store by a set amount when the player sinks a ship
-	void incrementScore() { score += 10; };
+	void incrementScore() { score += 10; };//Increases the store by a set amount when the player sinks a ship.
 	
 	/*how this function is going to work:
 
