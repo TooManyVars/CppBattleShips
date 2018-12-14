@@ -32,12 +32,6 @@ protected:
 
 public:
 
-	//Determines the default amount of characters to output in front when padding from the far left, before any intial output on the line.
-	const static int defaultLeftPadding = 80;
-	//Determines the default amount of characters to output in front when padding from the left, after any initial output on the line.
-	const static int defaultPadding = 15;
-
-
 	Entity(string pName, int bCols, int bRows, string water, string ship);
 
 	//Simple Getter methods.
