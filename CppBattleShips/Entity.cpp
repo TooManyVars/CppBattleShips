@@ -239,15 +239,33 @@ void Entity::placeShip()
 	drawBoard();
 }
 
+
 void Entity::autoPlaceShip()
 {
 	//get a random column/row number between 0 and the maximum number of columns/rows
 	int randomColumn = getRN(0, boardColumns - 1);
 	int randomRow = getRN(0, boardRows - 1);
 
+	//check if the coordinates generated already exist.
+	while (board[randomRow][randomColumn] == ship)
+	{
+		//while there is already a ship at the generated set of coordinates, generate a new set.
+		randomColumn = getRN(0, boardColumns - 1);
+		randomRow = getRN(0, boardRows - 1);
+	}
+
+
 	//assign a cell in the grid to a ship using the random set of coordinates.
 	//this referencing assumes that the inner vectors are the rows, and their indexes are the columns.
 	board[randomRow][randomColumn] = ship;
+}
+
+void Entity::autoPlaceShips()
+{
+	for (int i = 0; i < initialShips; i++)
+	{
+		autoPlaceShip();
+	}
 }
 
 

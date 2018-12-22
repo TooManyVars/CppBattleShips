@@ -14,6 +14,6 @@ vector<int>Player::guessShip(int boardSize)
 	cout << centerText() << "Enter a possible column(going vertical):" << endl;
 	column = getValidCinput("column");
 
-	//cast back to signed before returning as vector coordinates(i have no clue why???)
+	//cast back to signed before returning as vector coordinates just to clear those silly warnings(it's also good practice).
 	return { (signed int)row, (signed int)column };
 }

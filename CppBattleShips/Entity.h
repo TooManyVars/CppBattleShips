@@ -18,8 +18,8 @@ protected:
 	string ship; //the symbol indicating  ship.
 
 	unsigned int score = 0;
-	unsigned int initialShips; //the number of ships the player will start with. will be calculated in the constructor.
-	unsigned int shipsLeft; //the number of ships left(will be set after the player/AI places their ships
+	unsigned int initialShips = 0; //the number of ships the player will start with. will be calculated in the constructor.
+	
 
 	string playerName;
 
@@ -31,6 +31,8 @@ protected:
 	vector<vector<string> >detectionBoard; 
 
 public:
+
+	unsigned int shipsLeft; //the number of ships left(will be set after the player/AI places their ships
 
 	Entity(string pName, int bCols, int bRows, string water, string ship);
 
@@ -54,6 +56,7 @@ public:
 	void outputEntityInformation();//Outputs the various attributes of the player/ship.
 	void placeShip(); //place a sinle ship.
 	void autoPlaceShip(); //automatically place a ship on the board using RNG.
+	void autoPlaceShips();//places all ships onto a given board at random.
 	void incrementScore() { score += 10; };//Increases the store by a set amount when the player sinks a ship.
 	
 	/*how this function is going to work:
