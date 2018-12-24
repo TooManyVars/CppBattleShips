@@ -1,6 +1,5 @@
 	#pragma once
 #include <iostream>
-
 using namespace std;
 
 class Entity
@@ -19,6 +18,7 @@ protected:
 
 	unsigned int score = 0;
 	unsigned int initialShips = 0; //the number of ships the player will start with. will be calculated in the constructor.
+	unsigned int shipsLeft; //the number of ships left(will change if a player/Enemy ship is destroyed.)
 	
 
 	string playerName;
@@ -32,7 +32,6 @@ protected:
 
 public:
 
-	unsigned int shipsLeft; //the number of ships left(will be set after the player/AI places their ships
 
 	Entity(string pName, int bCols, int bRows, string water, string ship);
 
@@ -51,6 +50,8 @@ public:
 	
 	//Core game methods.
 	virtual void drawBoard();
+
+	//Currently figuring out how to change the color based on the entity type(enemy or player). i'm tempted to uhse templates, but need to come up with an appropriate implementation first.
 	virtual bool destroyedShip(vector<int>coordinates, string destroyer);
 
 	void outputEntityInformation();//Outputs the various attributes of the player/ship.

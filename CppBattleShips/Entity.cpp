@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 Entity::Entity(string pName, int bCols, int bRows, string water, string ship): playerName(pName), boardRows(bCols), boardColumns(bCols), water(water), ship(ship)
 {
 
