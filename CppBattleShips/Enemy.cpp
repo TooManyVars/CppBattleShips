@@ -10,6 +10,8 @@ vector<int> Enemy::guessShip(int boardSize) //guess where the player has positio
 	return { guessedRow, guessedColumn };
 }
 
+
+//The enemy class has it's own implementation so that we can introduce the concept of the detection board.
 bool Enemy::destroyedShip(vector<int> coordinates, string destroyer)
 {
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
@@ -19,7 +21,7 @@ bool Enemy::destroyedShip(vector<int> coordinates, string destroyer)
 		cout << "Hit!" << endl; //we need a better way of formatting text here.
 		cout << centerText() << flush;
 		printf("%s hit a ship at coordinates %i,%i!\n", destroyer.c_str(), coordinates[0]+1, coordinates[1]+1);
-		board[coordinates[0]][coordinates[1]] = water;//the "ship" has been sunken; make the position water again.
+		detectionBoard[coordinates[0]][coordinates[1]] = ship;//the "ship" has been sunken; make the position known on the detection board.
 		shipsLeft -= 1;
 
 		return true;
@@ -30,21 +32,4 @@ bool Enemy::destroyedShip(vector<int> coordinates, string destroyer)
 		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
 		return false;
 	}
-}
-
-//enemy variation of the drawBoard method should only show the detection board instead of the real board.
-void Enemy::drawBoard()
-{
-	printf("\n%s's board: ", playerName.c_str());
-	cout << endl;
-	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
-	{
-		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
-		{
-			cout << board[i][x] << "  "; //output it's contents
-		}
-		cout << endl; //end the line.
-	}
-
-	cout << "  " << endl;
 }

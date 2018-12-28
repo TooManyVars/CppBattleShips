@@ -26,12 +26,12 @@ protected:
 	//The board which is never shown on screen, and simply for guessing. 
 	vector<vector<string> >board; 
 
-	//The board visible to the player(s).
-	//if a set of coordinates on the board with a ship is guessed correctly, the detection board puts a ship on it's board at the same position.
+	//The board visible to the player.
+	//if a set of coordinates on the enemy board with a ship is guessed correctly, the detection board puts a ship on it's board at the same position.
+	//the reason we don't put this into the derived enemy class is because it's more convinient to initialise it here, in the base classes constructor.
 	vector<vector<string> >detectionBoard; 
 
 public:
-
 
 	Entity(string pName, int bCols, int bRows, string water, string ship);
 
@@ -47,15 +47,17 @@ public:
 	string getShip(); // gets the symbol being used to represent ships.
 
 	vector<vector<string> >getBoard();
+	vector<vector<string> >getDetectionBoard();
 	
 	//Core game methods.
-	virtual void drawBoard();
 
-	//Currently figuring out how to change the color based on the entity type(enemy or player). i'm tempted to uhse templates, but need to come up with an appropriate implementation first.
+	//Draws the board, but is now in obselecense, given our Draw UI function in our main() file
+	virtual void drawBoard(vector<vector<string> >Aboard);
+
+	//Check whether a set of coordinates the player has given matches the coordinates of a ship on the board. if it does, the ship is considered destroyed.
 	virtual bool destroyedShip(vector<int>coordinates, string destroyer);
 
 	void outputEntityInformation();//Outputs the various attributes of the player/ship.
-	void placeShip(); //place a sinle ship.
 	void autoPlaceShip(); //automatically place a ship on the board using RNG.
 	void autoPlaceShips();//places all ships onto a given board at random.
 	void incrementScore() { score += 10; };//Increases the store by a set amount when the player sinks a ship.

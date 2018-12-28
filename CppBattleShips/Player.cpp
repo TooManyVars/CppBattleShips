@@ -17,3 +17,26 @@ vector<int>Player::guessShip(int boardSize)
 	//cast back to signed before returning as vector coordinates just to clear those silly warnings(it's also good practice).
 	return { (signed int)row, (signed int)column };
 }
+
+void Player::placeShip()
+{
+	unsigned int row;
+	unsigned int column;
+
+	cout << "\n" << centerText() << "Enter the desired row: " << endl;
+	row = getValidCinput("row");
+
+	cout << "\n" << centerText() << "Enter the desired column: " << endl;
+	column = getValidCinput("column");
+
+	while (board[row][column] == ship)
+	{
+		cout << "\n" << centerText() << "There is already a ship at the given position." << endl;
+		cout << "\n" << centerText() << "Enter another desired row to place your ship:" << endl;
+		row = getValidCinput("row");
+		cout << "\n" << centerText() << "Enter another desired column to place your ship:" << endl;
+		column = getValidCinput("column");
+	}
+
+	board[row][column] = ship;
+}

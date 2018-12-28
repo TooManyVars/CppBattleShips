@@ -143,23 +143,33 @@ vector<vector<string> >Entity::getBoard()
 	return board;
 }
 
+
+vector<vector<string> >Entity::getDetectionBoard()
+{
+	return detectionBoard;
+}
+
 int Entity::getBoardSize()
 {
 	return boardColumns;
 }
 
-//draw the detection board to that it can be displayed to the player(s).
-void Entity::drawBoard()
+//draw the Board/Detection board so that it can be displayed to the player.
+//Aboard allows either to be drawn.
+void Entity::drawBoard(vector<vector<string> >Aboard)
 {
-	printf("\n%s's board: ", playerName.c_str());
+	printf("\n%s%s's board: ",centerText().c_str(),playerName.c_str());
 	cout << endl;
-	for (unsigned int i = 0; i < board.size(); i++)//iterate through the board's outer vector
+	for (unsigned int i = 0; i < Aboard.size(); i++)//iterate through the board's outer vector
 	{
- 		for (unsigned int x = 0; x < board[i].size(); x++) //iterate through each index's inner vector
+		cout << centerText() << flush;
+
+ 		for (unsigned int x = 0; x < Aboard[i].size(); x++) //iterate through each index's inner vector
 		{
-			cout << board[i][x] << "  "; //output it's contents
+			cout << Aboard[i][x] << "  "; //output it's contents
 		}
 		cout << endl; //end the line.
+		
 	}
 
 	cout << "  " << endl;
@@ -209,36 +219,13 @@ bool Entity::destroyedShip(vector<int>coordinates, string destroyer)
 
 	else
 	{ 
-		printf("\n%s%s missed!\n", centerText().c_str(),destroyer.c_str());
+		printf("\n%s%%s missed!\n", centerText().c_str(),destroyer.c_str());
 		cout << endl;
 
 		return false;
 	}	
 }
 
-void Entity::placeShip()
-{
-	unsigned int row;
-	unsigned int column;
-
-	cout << "\n" <<  centerText() << "Enter the desired row: " << endl;
-	row = getValidCinput("row");
-
-	cout << "\n" << centerText() << "Enter the desired column: " << endl;
-	column = getValidCinput("column");
-
-	while (board[row][column] == ship)
-	{
-		cout << "\n" << centerText() << "There is already a ship at the given position." << endl;
-		cout << "\n" << centerText() << "Enter another desired row to place your ship:" << endl;
-		row = getValidCinput("row");
-		cout << "\n" << centerText() << "Enter another desired column to place your ship:" << endl;
-		column = getValidCinput("column");
-	}
-
-	board[row][column] = ship;
-	drawBoard();
-}
 
 
 void Entity::autoPlaceShip()

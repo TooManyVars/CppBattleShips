@@ -11,6 +11,6 @@ public:
 	//Overrided variation of the destroyShip method adds the ship at the discovered coordinates onto the detection board.
 	virtual bool destroyedShip(vector<int>coordinates, string destroyer) override;
 	//Enemy variation of the drawBoard method only shows the detection board instead of the real board.
-	virtual void drawBoard() override;
+	
 
 };
