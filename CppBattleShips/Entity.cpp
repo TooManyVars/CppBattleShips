@@ -325,11 +325,34 @@ string Entity::centerText() //Centers the text on screen to fit it to the middle
 	return finalString;
 }
 
+//centers the input cursor on screen.
+void Entity::centerCursor()
+{
+
+	//Get a handle(no clue what that even is, but stay with me here)
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	//Coordinate struct?
+	COORD coord;
+
+	CONSOLE_SCREEN_BUFFER_INFO csbi;
+	int columns, rows;
+
+	GetConsoleScreenBufferInfo(hStdOut, &csbi);
+	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+	rows = (csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
+
+	coord.X = columns;
+	coord.Y = rows/2;
+
+	SetConsoleCursorPosition(hStdOut, coord);
+
+}
+
 void Entity::setTextColor(int colorNum)
 {
 	/*
 	Important colors:
-		- light red = 12
+		- light magenta = 13
 		- light green = 10
 		- white: 15
 	*/
