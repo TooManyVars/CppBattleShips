@@ -37,6 +37,7 @@ public:
 	static const int lightGreen = 10;
 	static const int white = 15;
 
+public:
 	Entity(string pName, int bCols, int bRows, string water, string ship);
 
 	//Simple Getter methods.
@@ -89,6 +90,8 @@ public:
 	static string centerText();
 	//centers the input cursor.
 	static void centerCursor();
+	//Get the input cursor's position on screen.
+	static COORD GetConsoleCursorPosition(HANDLE hConsoleOutput);
 
 	//Set the text color of the output, using a number assigned color(for example bright green is 10) goes up until 256 meaning that there are 256 possible colors.
 	static void setTextColor(int colorNum);

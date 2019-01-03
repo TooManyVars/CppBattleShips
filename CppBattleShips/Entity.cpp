@@ -23,7 +23,6 @@ Entity::Entity(string pName, int bCols, int bRows, string water, string ship): p
 		detectionBoard.push_back(temp);
 	}
 
-
 	//note that all of this logic is in light of the fact that the boards will all have the same height and width in order to make calculations easier.
 
 	/* Percentage hit logic
@@ -107,7 +106,6 @@ int Entity::getValidCinput(string axis)
 
 	//decrement AFTER checking if the input is below 1, as 1 is decremented to 0 and caught by the loop, ruling out placement of ships on row 1.
 	coordinate -= 1; //decrement by 1 so that the user can give a row and column number starting from 1.
-
 	
 					 //if the axis specifed was "row", check to see if the row number exists/is on the board. if it doesn't, loop input until it does.
 	if (axis == "row")
@@ -169,7 +167,6 @@ void Entity::drawBoard(vector<vector<string> >Aboard)
 			cout << Aboard[i][x] << "  "; //output it's contents
 		}
 		cout << endl; //end the line.
-		
 	}
 
 	cout << "  " << endl;
@@ -202,8 +199,6 @@ bool Entity::moreThanZero(int value)
 //Returns either true or false so that we can determine, outside the class, whether or not the player/enemy hit or not and adjust their score accordingly.
 bool Entity::destroyedShip(vector<int>coordinates, string destroyer)
 {
-	//cout << centerText() << flush; //center the text no matter the output.
-
 	//coordinates[0] is the X axis or the rows, and coordinates[1] is the y axis/column.
 	if (board[coordinates[0]][coordinates[1]] == ship)
 	{
@@ -225,8 +220,6 @@ bool Entity::destroyedShip(vector<int>coordinates, string destroyer)
 		return false;
 	}	
 }
-
-
 
 void Entity::autoPlaceShip()
 {
@@ -256,10 +249,10 @@ void Entity::autoPlaceShips()
 	}
 }
 
-
 int Entity::getValidIntInput()
 {
 	int value = 0;
+	centerCursor();
 	cin >> value;
 
 	while (cin.fail()) //when the user gives anything other than an integer:
@@ -271,6 +264,7 @@ int Entity::getValidIntInput()
 		
 		//give error message.
 		cout << centerText() << "Value must be positive/an integer, Please re-enter:" << endl;
+		centerCursor();
 
 		//get input again
 		cin >> value;
@@ -329,23 +323,42 @@ string Entity::centerText() //Centers the text on screen to fit it to the middle
 void Entity::centerCursor()
 {
 
-	//Get a handle(no clue what that even is, but stay with me here)
-	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
-	//Coordinate struct?
-	COORD coord;
+	/*
+	 How we could center the cursor:
+
+	 Get the current position of the cursor.
+	 Get the X position near the middle of the screen by multiplying the number of rows in total by 1.04
+	 Whilst keeping the Y position the same, set the cursor to the middle on the X axis.
+
+	*/
+
 
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
-	int columns, rows;
+	int TotalRows;
 
-	GetConsoleScreenBufferInfo(hStdOut, &csbi);
-	columns = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-	rows = (csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
+	GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
 
-	coord.X = columns;
-	coord.Y = rows/2;
+	TotalRows = (csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
 
-	SetConsoleCursorPosition(hStdOut, coord);
+	COORD currentCursorPosition = GetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE));
+	currentCursorPosition.X = TotalRows * 1.04; 
 
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), currentCursorPosition);
+}
+
+COORD Entity::GetConsoleCursorPosition(HANDLE hConsoleOutput)
+{
+	CONSOLE_SCREEN_BUFFER_INFO cbsi;
+	if (GetConsoleScreenBufferInfo(hConsoleOutput, &cbsi))
+	{
+		return cbsi.dwCursorPosition;
+	}
+	else
+	{
+		// The function failed. Call GetLastError() for details.
+		COORD invalid = { 0, 0 };
+		return invalid;
+	}
 }
 
 void Entity::setTextColor(int colorNum)
