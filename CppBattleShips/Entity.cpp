@@ -193,6 +193,15 @@ bool Entity::moreThanZero(int value)
 	return false;
 }
 
+void Entity::hasPressedEnter()
+{
+
+	if (GetKeyState(VK_RETURN) & 0x8000)
+	{
+		centerCursor();
+	}
+}
+
 //takes in a set of coordinates(the vector will always be of length 2) and checks whether a ship exists there on the entity's board. 
 //If it does, destroy it and replace a water cell at the position.
 //The destroyer parameter is used to get the name of the player/enemy who destroyed the ship.
@@ -268,7 +277,6 @@ int Entity::getValidIntInput()
 
 		//get input again
 		cin >> value;
-
 	}
 
 	return value;
@@ -341,7 +349,7 @@ void Entity::centerCursor()
 	TotalRows = (csbi.srWindow.Bottom - csbi.srWindow.Top + 1);
 
 	COORD currentCursorPosition = GetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE));
-	currentCursorPosition.X = TotalRows * 1.04; 
+	currentCursorPosition.X = TotalRows * 1.03; 
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), currentCursorPosition);
 }

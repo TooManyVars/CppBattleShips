@@ -95,6 +95,9 @@ public:
 
 	//Set the text color of the output, using a number assigned color(for example bright green is 10) goes up until 256 meaning that there are 256 possible colors.
 	static void setTextColor(int colorNum);
+
+	//checks if the player has pressed enter when giving input and re-centers the cursor.
+	static void hasPressedEnter();
 };
 
 
