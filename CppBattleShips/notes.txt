@@ -1,8 +1,19 @@
-Major Issues/Nessecary updates(logic related):
- 
--  A grid around the outside, to be able to tell the coordinates.
+All the possible names for an enemy:
 
+		vector<string>defaultNames = { 
 
-Things to do:
-- make enemy/player attempting to guess more verbose
-- color the text to differentiate between error messages more easily.
+			"Robb","Chris the photographer","Mo",
+			"Katarina","Miss fortune", "Kumiko the non-exsistent fox-cat",
+			"Blueface", "T.O.", "The entire human endocrine system"
+			"Jaeger blitz counter", "Zofia", "Ela",
+			"Upset offset","Dead meme","Deadlocs",
+			"Lancey", "Skep", "Discord manager",
+			"r/woosh", "HentaiHaven","[CBA to name]"
+			"999", "Missingno", "pump"
+			"Dave", "Propane", "IQ",
+			"Politically correct person(who is superior)", "Facist goverment", "Elon musk",
+			"Don cannon", "The beat", "Tay keith", 
+			"Offwhitevlone1", "Herbo", "Dkjstra"
+			,"Vonn nuemann", "Elite four member", "Facist dictator",
+			"The FBI", "Visual studio dark theme", "Kirito(oh, you're screwed now)"
+		};
