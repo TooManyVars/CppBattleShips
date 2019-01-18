@@ -126,7 +126,7 @@ int Entity::getValidCinput(string axis)
 	{
 		while (coordinate > board[0].size() - 1)
 		{
-			cout << centerText() <<"Column does not exist within the board, please enter a different column." << endl;
+			cout << "\n" << centerText() << "Column does not exist within the board, please enter a different column." << endl;
 			coordinate = getValidIntInput();
 			coordinate -= 1;
 		}
@@ -272,7 +272,7 @@ int Entity::getValidIntInput()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 		
 		//give error message.
-		cout << centerText() << "Value must be positive/an integer, Please re-enter:" << endl;
+		cout << "\n" << centerText() << "Value must be positive/an integer, Please re-enter:" << endl;
 		centerCursor();
 
 		//get input again

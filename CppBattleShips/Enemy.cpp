@@ -22,7 +22,11 @@ bool Enemy::destroyedShip(vector<int> coordinates, string destroyer)
 		cout << centerText() << flush;
 		printf("%s hit a ship at coordinates %i,%i!\n", destroyer.c_str(), coordinates[0]+1, coordinates[1]+1);
 		detectionBoard[coordinates[0]][coordinates[1]] = ship;//the "ship" has been sunken; make the position known on the detection board.
+		
 		shipsLeft -= 1;
+
+		//Set the ship back to water on the hidden but regular board.
+		board[coordinates[0]][coordinates[1]] = water;
 
 		return true;
 	}
